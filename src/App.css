@@ -1,0 +1,45 @@
+.App {
+  text-align: center;
+}
+
+#cookieCount{
+  font-size: 24px;
+}
+
+#cookieImg {
+  width: 25%;
+  display: inline-block;
+}
+
+#headerHeading {
+  font-size: 3em;
+  display: inline-block;
+}
+
+.shopItem{
+  border: 1px solid black;
+}
+
+.unavailable{
+  background-color: red;
+}
+
+
+@media screen and (max-width: 767px) {
+  #cookieImg {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #cookieImg {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  #cookieImg {
+    width: 40%;
+  }
+}
+
