@@ -37,7 +37,7 @@ const App = () =>{
             priceListCopy[item] = priceListCopy[item] * 1.15;
             setPriceList(priceListCopy);
         } else{
-            'no';
+            console.log('no');
         }
     }
 
