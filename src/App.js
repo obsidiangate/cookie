@@ -30,11 +30,15 @@ const App = () =>{
     });
 
     function purchase(item){
-        setCursor(cursor + 1); 
-        let priceListCopy = {...priceList};
-        setCookieCount(cookieCount - Math.ceil(priceListCopy[item]));
-        priceListCopy[item] = priceListCopy[item] * 1.15;
-        setPriceList(priceListCopy);
+        if(cookieCount >= item){
+            setCursor(cursor + 1); 
+            let priceListCopy = {...priceList};
+            setCookieCount(cookieCount - Math.ceil(priceListCopy[item]));
+            priceListCopy[item] = priceListCopy[item] * 1.15;
+            setPriceList(priceListCopy);
+        } else{
+            'no';
+        }
     }
 
     return (
