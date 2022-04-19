@@ -29,12 +29,12 @@ const App = () =>{
         }
     });
 
-    function purchase(item){
-        if(cookieCount >= priceList[item]){
-            setCursor(cursor + 1); 
+    function purchase(item, itemPrice){
+        if(cookieCount >= priceList[itemPrice]){
+            item++;
             let priceListCopy = {...priceList};
-            setCookieCount(cookieCount - Math.ceil(priceListCopy[item]));
-            priceListCopy[item] = priceListCopy[item] * 1.15;
+            setCookieCount(cookieCount - Math.ceil(priceListCopy[itemPrice]));
+            priceListCopy[itemPrice] = priceListCopy[itemPrice] * 1.15;
             setPriceList(priceListCopy);
         }
     }
@@ -48,12 +48,12 @@ const App = () =>{
             <img onClick={() => setCookieCount(cookieCount + 1)} src='./images/cookie.png' id='cookieImg' alt='Click this cookie'></img>
             <h3 id='cookieCount'>Cookies: {cookieCount}</h3>
             <div id='shop'>
-                <div id='cursorShop' className={'shopItem ' + statusList.cursorStatus} onClick={() => purchase('cursorPrice')}>
+                <div id='cursorShop' className={'shopItem ' + statusList.cursorStatus} onClick={() => purchase(cursor, 'cursorPrice')}>
                     <h4>Cursor</h4>
                     <p>Cost: {Math.ceil(priceList.cursorPrice)}</p>
                     <h2>{cursor}</h2>
                 </div>
-                <div id='grandma' className={'shopItem ' + statusList.grandmaStatus} onClick={() => purchase('grandmaPrice')}>
+                <div id='grandma' className={'shopItem ' + statusList.grandmaStatus} onClick={() => purchase(grandma, 'grandmaPrice')}>
                     <h4>Grandma</h4>
                     <p>Cost: {priceList.grandmaPrice}</p>
                     <h2>{grandma}</h2>
