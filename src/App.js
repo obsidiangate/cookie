@@ -29,13 +29,12 @@ const App = () =>{
         }
     });
 
-    function purchase(item, itemPrice){
-        alert(itemPrice)
-        if(cookieCount >= itemPrice){
+    function purchase(item){
+        if(cookieCount >= priceList[item]){
             setCursor(cursor + 1); 
             let priceListCopy = {...priceList};
-            setCookieCount(cookieCount - Math.ceil(priceListCopy[itemPrice]));
-            priceListCopy[itemPrice] = priceListCopy[itemPrice] * 1.15;
+            setCookieCount(cookieCount - Math.ceil(priceListCopy[item]));
+            priceListCopy[item] = priceListCopy[item] * 1.15;
             setPriceList(priceListCopy);
         } else{
             alert('no');
@@ -51,7 +50,7 @@ const App = () =>{
             <img onClick={() => setCookieCount(cookieCount + 1)} src='./images/cookie.png' id='cookieImg' alt='Click this cookie'></img>
             <h3 id='cookieCount'>Cookies: {cookieCount}</h3>
             <div id='shop'>
-                <div id='cursorShop' className={'shopItem ' + statusList.cursorStatus} onClick={() => purchase(cursorPrice)}>
+                <div id='cursorShop' className={'shopItem ' + statusList.cursorStatus} onClick={() => purchase('cursorPrice')}>
                     <h4>Cursor</h4>
                     <p>Cost: {Math.ceil(priceList.cursorPrice)}</p>
                     <h2>{cursor}</h2>
