@@ -51,7 +51,7 @@ const App = () =>{
             <img onClick={() => setCookieCount(cookieCount + 1)} src='./images/cookie.png' id='cookieImg' alt='Click this cookie'></img>
             <h3 id='cookieCount'>Cookies: {cookieCount}</h3>
             <div id='shop'>
-                <div id='cursorShop' className={'shopItem ' + statusList.cursorStatus} onClick={() => purchase('cursor', 'cursorPrice')}>
+                <div id='cursorShop' className={'shopItem ' + statusList.cursorStatus} onClick={() => purchase(cursorPrice)}>
                     <h4>Cursor</h4>
                     <p>Cost: {Math.ceil(priceList.cursorPrice)}</p>
                     <h2>{cursor}</h2>
