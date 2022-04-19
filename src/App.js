@@ -30,7 +30,7 @@ const App = () =>{
     });
 
     function purchase(item, itemPrice){
-        alert(item);
+        alert(itemPrice)
         if(cookieCount >= itemPrice){
             setCursor(cursor + 1); 
             let priceListCopy = {...priceList};
