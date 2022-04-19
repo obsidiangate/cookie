@@ -31,7 +31,7 @@ const App = () =>{
 
     function purchase(item, itemPrice){
         alert(item);
-        if(cookieCount >= item){
+        if(cookieCount >= itemPrice){
             setCursor(cursor + 1); 
             let priceListCopy = {...priceList};
             setCookieCount(cookieCount - Math.ceil(priceListCopy[itemPrice]));
