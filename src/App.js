@@ -53,7 +53,7 @@ const App = () =>{
                     <p>Cost: {Math.ceil(priceList.cursorPrice)}</p>
                     <h2>{cursor}</h2>
                 </div>
-                <div id='grandma' className={'shopItem ' + statusList.grandmaStatus} onClick={() => purchase(grandma, 'grandmaPrice')}>
+                <div id='grandma' className={'shopItem ' + statusList.grandmaStatus} onClick={() => purchase('grandmaPrice')}>
                     <h4>Grandma</h4>
                     <p>Cost: {priceList.grandmaPrice}</p>
                     <h2>{grandma}</h2>
