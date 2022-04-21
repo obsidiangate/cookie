@@ -60,7 +60,7 @@ const App = () =>{
                 </div>
                 <div id='grandma' className={'shopItem ' + statusList.grandmaStatus} onClick={() => purchase('grandma')}>
                     <h4>Grandma</h4>
-                    <p>Cost: {priceList.grandmaPrice}</p>
+                    <p>Cost: {Math.ceil(priceList.grandmaPrice)}</p>
                     <h2>{itemList.grandma}</h2>
                 </div>
             </div>
