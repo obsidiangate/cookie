@@ -5,17 +5,14 @@ import './App.css';
 
 const App = () =>{
     const [cookieCount, setCookieCount] = useState(0);
-    // const [cursor, setCursor] = useState(0);
-    // const [grandma, setGrandma] = useState(0);
+    const [itemList, setItemList] = useState({
+        cursor: 0,
+        grandma: 0
+    });
     const [statusList, setStatusList] = useState({
         cursorStatus: 'unavailable',
         grandmaStatus: 'unavailable'
     });
-
-    const [itemList, setItemList] = useState({
-        cursor: 0,
-        grandma: 0
-    })
     const [priceList, setPriceList] = useState({
         cursorPrice: 15,
         grandmaPrice: 100
@@ -37,6 +34,7 @@ const App = () =>{
     function purchase(item){
         let itemPrice = item + 'Price';
         if(cookieCount >= priceList[itemPrice]){
+            alert(itemList.item);
             let priceListCopy = {...priceList};
             setCookieCount(cookieCount - Math.ceil(priceListCopy[itemPrice]));
             priceListCopy[itemPrice] = priceListCopy[itemPrice] * 1.15;
