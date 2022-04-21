@@ -32,7 +32,7 @@ const App = () =>{
     function purchase(itemPrice){
         if(cookieCount >= priceList[itemPrice]){
             let grandmaSet = 'set' + 'Grandma';
-            alert(grandmaSet);
+            grandmaSet(100);
             setCursor(cursor + 1);
             let priceListCopy = {...priceList};
             setCookieCount(cookieCount - Math.ceil(priceListCopy[itemPrice]));
