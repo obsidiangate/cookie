@@ -1,6 +1,6 @@
 // disabled div
 
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useCallback} from "react";
 import './App.css';
 
 const App = () =>{
@@ -19,19 +19,30 @@ const App = () =>{
         cursorPrice: 15,
         grandmaPrice: 100
     });
+
+    const [cps, setCps] = useState((itemList.cursor * 1/10) + itemList.grandma);
+    // enable the use of function in useEffect
+    const statusChange = useCallback(() => {
+        Object.entries(itemList).forEach(entry => {
+            const [key] = entry;
+            console.log(key);
+        });
+    }, [itemList]);
+
     // value * numeber of characters
     useEffect(() => {
+        setCps((itemList.cursor * 1/10) + itemList.grandma);
         // infinity check
-        if(1000/((itemList.cursor * 1/10) + itemList.grandma) !== 1.797693134862315E+308 * 1.001){
-            const intervalVar = 1000/((itemList.cursor * 1/10) +itemList.grandma);
+        if((1000/cps) !== 1.797693134862315E+308 * 1.001){
             const interval = setInterval(() => {
                 setCookieCount(cookieCount + 1);
-            }, intervalVar);
+                statusChange();
+            }, 1000/cps);
             return () => {
                 clearInterval(interval);
             };
         }
-    });
+    }, [itemList, priceList, statusList, cps, cookieCount, statusChange]);
 
     function purchase(item){
         let itemPrice = item + 'Price';
@@ -47,6 +58,7 @@ const App = () =>{
             priceListCopy[itemPrice] = priceListCopy[itemPrice] * 1.15;
             // updates itemList(15% more expensive)
             setPriceList(priceListCopy);
+            statusChange();
         }
     }
 
@@ -58,6 +70,7 @@ const App = () =>{
             <br/>
             <img onClick={() => setCookieCount(cookieCount + 1)} src='./images/cookie.png' id='cookieImg' alt='Click this cookie'></img>
             <h3 id='cookieCount'>Cookies: {cookieCount}</h3>
+            <h3 id='cps'>CPS: {cps}</h3>
             <div id='shop'>
                 <div id='cursorShop' className={'shopItem ' + statusList.cursorStatus} onClick={() => purchase('cursor')}>
                     <h4>Cursor</h4>
